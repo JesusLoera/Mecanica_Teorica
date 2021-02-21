@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Transpuesta de una Matriz}{2}{}%
+\contentsline {section}{\numberline {2}Matrices simétricas}{3}{}%
+\contentsline {section}{\numberline {3}Matrices antisimétricas}{3}{}%
+\contentsline {section}{\numberline {4}Definición del producto punto con multiplicación matricial}{3}{}%
+\contentsline {section}{\numberline {5}Otra forma de reescribir una matriz}{3}{}%
+\contentsline {section}{\numberline {6}Determinante de una matriz}{4}{}%
+\contentsline {section}{\numberline {7}Producto cruz de vectores}{4}{}%
