@@ -1,0 +1,258 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{vmargin}
+
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+
+\makeatletter
+\newcommand*{\bigcdot}{}% Check if undefined
+\DeclareRobustCommand*{\bigcdot}{%
+  \mathbin{\mathpalette\bigcdot@{}}%
+}
+\newcommand*{\bigcdot@scalefactor}{.5}
+\newcommand*{\bigcdot@widthfactor}{1.15}
+\newcommand*{\bigcdot@}[2]{%
+  % #1: math style
+  % #2: unused
+  \sbox0{$#1\vcenter{}$}% math axis
+  \sbox2{$#1\cdot\m@th$}%
+  \hbox to \bigcdot@widthfactor\wd2{%
+    \hfil
+    \raise\ht0\hbox{%
+      \scalebox{\bigcdot@scalefactor}{%
+        \lower\ht0\hbox{$#1\bullet\m@th$}%
+      }%
+    }%
+    \hfil
+  }%
+}
+\makeatother
+
+\title{Tarea 1: Vectores}
+\author{Jesus E. Loera}
+\date{\today}
+
+\begin{document}
+
+\maketitle      			% Hoja con el titulo, autor y fecha
+
+\tableofcontents			% Índice
+
+\begin{center}
+	\rule[0mm]{150mm}{0.1mm}		% Para dibujar una linea horizontal de
+									% [elevación]{longitud}{grosor}
+	\end{center}
+	
+	
+\begin{abstract}			% ABSTRACT
+
+	\noindent 				% Anula la sangria de este parrafo
+	En ésta tarea demostraremos algunas de las propiedades de los vectores en 
+	$\mathbb{R}^{n}$
+	\end{abstract}
+	
+\begin{center}
+	\rule[0mm]{150mm}{0.1mm}
+	\end{center}
+
+\section*{Introduction}		% Introduce el primer tema, pero el asterisco le 
+                            % quita la enumeración
+                            
+    Este es un resumen con los apuntes más importantes de la tercera sesión del curso de mecánica teórica
+
+\section{Transpuesta de una Matriz}
+
+
+    Dada una matriz $ A = (a_{ij})_{3x3} $
+
+    \begin{equation}
+        A= \begin{bmatrix}
+                a_{11} & a_{12} & a_{13} \\
+                a_{21} & a_{22} & a_{23} \\
+                a_{31} & a_{32} & a_{33} 
+           \end{bmatrix}
+    \end{equation}
+
+    Definimos su matriz transpuesta como:
+
+    \begin{equation}
+      A^{T}= \begin{bmatrix}
+              a_{11} & a_{21} & a_{31} \\
+              a_{12} & a_{22} & a_{32} \\
+              a_{13} & a_{23} & a_{33} 
+      \end{bmatrix}
+    \end{equation}
+
+    Es posible generar la transposición de una matriz de la siguiente manera:
+    \vspace{5px}
+
+    Dada una matriz A:
+
+    \begin{equation}
+      A = (a_{ij})_{mxn} \in M_{mxn}
+    \end{equation}
+
+    \vspace{5px}
+    
+    Entonces su transpuesta es: 
+
+    \begin{equation}
+      A^{T}=  (b_{ij})_{nxm} \in M_{nxm} \mid b_{ij} = a_{ji} 
+    \end{equation}
+
+\section{Matrices simétricas}
+
+    Una matriz cuadrada A es simétrica si:
+
+    \begin{equation*}
+      A^{T}=A
+    \end{equation*}
+
+\section{Matrices antisimétricas}
+
+    Una matriz cuadrada A es antisimétrica si:
+
+    \begin{equation*}
+      A^{T}=-A
+    \end{equation*}
+    
+\section{Definición del producto punto con multiplicación matricial}
+
+
+  Recordemos la anterior definicón que teníamos para el producto punto:
+
+  \begin{gather*}
+    \bigcdot : \mathbb{R}^{n} \times \mathbb{R}^{n} \longrightarrow \mathbb{R}^{n} \\
+    (X, Y) \longmapsto X \bigcdot Y =  ( x_{1}y_{1}+x_{2}y_{2}+x_{3}y_{3}+...,x_{n}y_{n} ) 
+  \end{gather*}
+
+  Dados X, Y vectores renglones en $\mathbb{R}^{n}$ o matrices de $M_{1xn}$  
+
+  \begin{equation}
+    X \bigcdot Y = XY^{T}=  \begin{bmatrix}
+                              x_{1} & \cdots & x_{n}
+                            \end{bmatrix}
+                            \begin{bmatrix}
+                              y_{1} \\
+                              \vdots \\
+                              y_{n}
+                            \end{bmatrix}
+  \end{equation}
+
+  Obs: Notemos que con ambas formas de el producto obtenemos un escalar y una matriz 1X1
+
+\section{Otra forma de reescribir una matriz}
+
+  Consideremos la matriz de la siguiente matriz:
+
+  \begin{equation}
+      A= \begin{bmatrix}
+              a & b & c \\
+              d & e & f \\
+              g & h & i 
+        \end{bmatrix}
+  \end{equation}
+
+  Realizando las respectivas operaciones podremos comprobar que:
+
+  \begin{equation}
+    A=a \thinspace {i}^{T} {i} + b \thinspace {i}^{T} {j} + c \thinspace {i}^{T} {k} +
+      d \thinspace {j}^{T} {i} + e \thinspace {j}^{T} {j} + f \thinspace {j}^{T} {k} +
+      g \thinspace {k}^{T} {i} + h \thinspace {k}^{T} {j} + i \thinspace {k}^{T} {k} 
+  \end{equation}
+
+  Tal que:
+
+  \begin{gather}
+    i = \begin{bmatrix}
+          1 & 0 & 0
+        \end{bmatrix} \\
+    j = \begin{bmatrix}
+          0 & 1 & 0
+        \end{bmatrix} \\
+    k = \begin{bmatrix}
+          0 & 0 & 1
+        \end{bmatrix}
+  \end{gather}
+
+\section{Determinante de una matriz}
+
+  Tengamos una matriz $A = (a_{ij})_{2X2}$
+
+  \begin{equation}
+    A = \begin{bmatrix}
+          a & b \\
+          c & d
+        \end{bmatrix}
+  \end{equation}
+
+  Su determinante, denotado por $det(A)$ o $ \mid A \mid $, lo calculamos de la siguiente manera:
+
+  \begin{equation}
+    \mid A \mid = det(A) = A = \begin{vmatrix}
+                                  a & b \\
+                                  c & d
+                                \end{vmatrix} = ad-bc
+  \end{equation}
+
+  Ahora, en el caso de una matriz $A = (a_{ij})_{3X3}$, por ejemplo, la de la ecuación (6):
+
+  \begin{equation*}
+    A= \begin{bmatrix}
+            a & b & c \\
+            d & e & f \\
+            g & h & i 
+      \end{bmatrix}
+  \end{equation*}
+
+Podemos calcular su determinante de la siguiente manera:
+
+\begin{equation}
+  \mid A \mid = det(A) = A= \begin{vmatrix}
+                                a & b & c \\
+                                d & e & f \\
+                                g & h & i 
+                            \end{vmatrix} 
+                            =a\begin{vmatrix}
+                              e & f \\
+                              h & i
+                            \end{vmatrix} -
+                            b\begin{vmatrix}
+                              d & f \\
+                              g & i
+                            \end{vmatrix} +
+                            c\begin{vmatrix}
+                              d & e \\
+                              g & h
+                            \end{vmatrix} 
+\end{equation}
+
+\section{Producto cruz de vectores}
+
+  Consideremos dos vectores $ X = (x_{1},x_{2},x_{3}) ,Y=(y_{1},y_{2},y_{3}) \in \mathbb{R}^{3}$ , definimos su producto cruz como:
+
+  \begin{gather*}
+    \times : \mathbb{R}^{3} \times \mathbb{R}^{3} \longrightarrow \mathbb{R}^{3} \\
+    (X, Y) \longmapsto X \times Y =  \begin{vmatrix}
+                                          i     & j     & k     \\
+                                          x_{1} & x_{2} & x_{3} \\
+                                          y_{1} & y_{2} & y_{3} 
+                                      \end{vmatrix} 
+  \end{gather*}
+
+	
+\end{document}
